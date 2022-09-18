@@ -3,13 +3,13 @@ import ButtonDelete from '../ButtonDelete/ButtonDelete';
 import Count from '../Count/Count';
 import "./style.scss";
 
-const Product = ({item, deleteProduct, increase, decrease}) => {
+const Product = ({item, deleteProduct, increase, decrease, changeValue}) => {
   return (
         <section className="product">
         <div className="product__img"><img src={`./img/products/${item.img}`} alt={item.title} /></div>
         <div className="product__title">{item.title}</div>
         <div className="product__count">
-            <Count count={item.count} increase={increase} decrease={decrease} id={item.id}/>
+            <Count count={item.count} increase={increase} decrease={decrease} id={item.id} changeValue={changeValue}/>
         </div>
         <div className="product__price">{item.priceTotal}</div>
         <div className="product__controls">

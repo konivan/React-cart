@@ -1,11 +1,11 @@
 import React from 'react';
 import "./style.scss";
 
-const CartFooter = () => {
+const CartFooter = ({total}) => {
   return (
   <footer className="cart-footer">
-    <div className="cart-footer__count">3 единицы</div>
-    <div className="cart-footer__price">329 000 руб.</div>
+    <div className="cart-footer__count">Кол-во: {total.count}</div>
+    <div className="cart-footer__price">{total.price} руб.</div>
   </footer>
   );
 };
