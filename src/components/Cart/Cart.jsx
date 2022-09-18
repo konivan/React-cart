@@ -9,9 +9,39 @@ const Cart = () => {
 
   const [cart, setCart] = useState(data);
 
+  const increase = (id) => {
+    setCart((cart) => {
+      return cart.map((product) => {
+        if (product.id === id) {
+          return {
+            ...product,
+            count: ++product.count,
+            priceTotal: product.count * product.price
+          };
+        };
+        return product;
+      });
+    })
+  }
+
+  const decrease = (id) => {
+    setCart((cart) => {
+      return cart.map((product) => {
+        if (product.id === id && product.count >= 2) {
+          return {
+            ...product,
+            count: --product.count,
+            priceTotal: product.count * product.price
+          };
+        }
+        return product;
+      });
+    });
+  };
+
   const deleteProduct = (id) => {
     setCart((cart) => {
-      return cart.filter((product) => {return id !== product.id})
+      return cart.filter((product) => id !== product.id)
     })
   }
 
@@ -19,7 +49,7 @@ const Cart = () => {
     <section className="cart">
         <CartHeader />
         {cart.map((item) =>
-        <Product item={item} key={item.id} deleteProduct={deleteProduct}/>
+        <Product item={item} key={item.id} deleteProduct={deleteProduct} increase={increase} decrease={decrease}/>
         )}
         <CartFooter />
     </section>
