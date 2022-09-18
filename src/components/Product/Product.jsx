@@ -3,7 +3,7 @@ import ButtonDelete from '../ButtonDelete/ButtonDelete';
 import Count from '../Count/Count';
 import "./style.scss";
 
-const Product = ({item}) => {
+const Product = ({item, deleteProduct}) => {
   return (
         <section className="product">
         <div className="product__img"><img src={`./img/products/${item.img}`} alt={item.title} /></div>
@@ -13,7 +13,7 @@ const Product = ({item}) => {
         </div>
         <div className="product__price">{item.price}</div>
         <div className="product__controls">
-            <ButtonDelete />
+            <ButtonDelete deleteProduct={deleteProduct} id={item.id}/>
         </div>
     </section>
   );

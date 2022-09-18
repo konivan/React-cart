@@ -9,11 +9,17 @@ const Cart = () => {
 
   const [cart, setCart] = useState(data);
 
+  const deleteProduct = (id) => {
+    setCart((cart) => {
+      return cart.filter((product) => {return id !== product.id})
+    })
+  }
+
   return (
     <section className="cart">
         <CartHeader />
         {cart.map((item) =>
-        <Product item={item} key={item.id}/>
+        <Product item={item} key={item.id} deleteProduct={deleteProduct}/>
         )}
         <CartFooter />
     </section>
